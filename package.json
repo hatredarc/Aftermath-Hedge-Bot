@@ -1,0 +1,40 @@
+{
+  "name": "@classic-flow/bot",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Aftermath Account maker bot hedged by the user's own Vault",
+  "type": "module",
+  "scripts": {
+    "cli": "tsx src/cli.ts",
+    "build:onboarding": "esbuild src/onboarding-client.ts --bundle --platform=browser --format=iife --target=es2022 --outfile=.classic-flow-ui/onboarding.js",
+    "setup": "npm run build:onboarding && tsx src/cli.ts setup --output classic-flow.config.json",
+    "agent:create": "tsx src/cli.ts agent create --output .env.agent",
+    "commands": "tsx src/cli.ts commands",
+    "verify": "tsx src/cli.ts doctor --config classic-flow.config.json",
+    "dry-run": "tsx src/cli.ts start --config classic-flow.config.json --once",
+    "start": "npm run build:onboarding && tsx src/cli.ts start --config classic-flow.config.json",
+    "start:live": "npm run build:onboarding && tsx src/cli.ts start --config classic-flow.config.json --live --confirm-live I_UNDERSTAND",
+    "build": "tsc",
+    "check": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@mysten/sui": "2.29.0",
+    "@mysten/wallet-standard": "^0.21.22",
+    "@wallet-standard/app": "1.1.1",
+    "dotenv": "16.6.1",
+    "esbuild": "^0.28.2",
+    "tsx": "4.20.5",
+    "zod": "4.1.5"
+  },
+  "devDependencies": {
+    "@types/node": "22.19.19",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.13.0"
+  },
+  "files": [
+    "src",
+    "README.md"
+  ]
+}

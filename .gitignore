@@ -1,0 +1,11 @@
+node_modules/
+dist/
+test/
+.env*
+classic-flow.config.json
+classic-flow.config.example.json
+builder-approval.txkind
+.classic-flow-ui/
+*.tgz
+*.state.json
+*.log
